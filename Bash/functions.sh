@@ -2,15 +2,13 @@
 #Using functions
 
 arithmetic(){
-	read -p "Enter number 1: " num1
-	read -p "Enter number2: " num2
 
-	echo "Sum =" $((num1+num2))
-	echo "Diff=" $((num1-num2))
-	echo "Product="$((num1*num2))
+	echo "Sum =" $(($1+$2))
+	echo "Diff=" $(($1-$2))
+	echo "Product="$(($1*$2))
 
-	if [ $num2 -ne 0 ]; then
-        	echo "Division="$((num1/num2))
+	if [ $2 -ne 0 ]; then
+        	echo "Division="$(($1/$2))
 	else
         	echo "Please enter a non zero value to for division"
 
@@ -18,9 +16,8 @@ arithmetic(){
 }
 
 factorial(){
-	read -p "Enter the number to find its factorial: " NUM
 	fact=1
-	for ((i=1;i<=NUM;i++)) do
+	for ((i=1;i<=$1;i++)) do
 	        fact=$((fact*$i))
 	done
 
@@ -34,14 +31,14 @@ persistence(){
 }
 
 strlen(){
-	read -p "Enter a string to find its length: " str
+	str=$1
 	len=${#str}
 
 	echo "The length of the string is $len"
 }
 
 palindrome(){
-	read -p  "Enter a string: " string
+	string=$1
 
 	len=${#string}
 	palin=0
@@ -61,9 +58,8 @@ palindrome(){
 }
 
 oddoreven(){
-	read -p "Enter a number: " NUM
 	
-	if [[ $NUM%2 -eq 0 ]]; then
+	if [[ $1%2 -eq 0 ]]; then
 	        echo "It is an even number"
 	else
 	        echo "It is an odd number"
@@ -79,17 +75,24 @@ echo "5.Palindrome"
 echo "6.Odd or even"
 read -p "Choose your option: " ch
 if [[ $ch -eq 1 ]]; then
-	arithmetic
+	read -p "Enter number 1: " num1
+        read -p "Enter number2: " num2
+
+	arithmetic $num1 $num2
 elif [[ $ch -eq 2 ]]; then
-	factorial
+	read -p "Enter the number to find its factorial: " NUM
+	factorial $NUM
 elif [[ $ch -eq 3 ]]; then
 	persistence
 elif [[ $ch -eq 4 ]]; then
-	strlen
+	read -p "Enter a string to find its length: " str
+	strlen $str
 elif [[ $ch -eq 5 ]]; then
-	palindrome
+	read -p "Enter a string: " s
+	palindrome $s
 elif [[ $ch -eq 6 ]]; then
-	oddoreven
+	read -p "Enter a number: " no
+	oddoreven $no
 else
 	echo "Wrong choice"
 fi
