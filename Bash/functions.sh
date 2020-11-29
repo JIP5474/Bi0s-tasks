@@ -1,5 +1,6 @@
 #!/bin/bash
 #Using functions
+#using menu driven script
 
 arithmetic(){
 
@@ -27,7 +28,7 @@ factorial(){
 persistence(){
 	echo "Script to find a file named persistence"
 
-	find / -type f -name persistence 2>/dev/null
+	find / -type f -name persistence 
 }
 
 strlen(){
@@ -66,7 +67,7 @@ oddoreven(){
 	fi
 }
 
-echo "Menu"
+echo "Menu"					#using menu driven script
 echo "1.Arithmetic operations"
 echo "2.Factorial"
 echo "3.To find a file named persistence"
@@ -74,25 +75,39 @@ echo "4.Find string length"
 echo "5.Palindrome"
 echo "6.Odd or even"
 read -p "Choose your option: " ch
-if [[ $ch -eq 1 ]]; then
-	read -p "Enter number 1: " num1
-        read -p "Enter number2: " num2
+case $ch in
+	"1" )
+		read -p "Enter number 1: " num1
+        	read -p "Enter number2: " num2
+		arithmetic $num1 $num2
+		;;
 
-	arithmetic $num1 $num2
-elif [[ $ch -eq 2 ]]; then
-	read -p "Enter the number to find its factorial: " NUM
-	factorial $NUM
-elif [[ $ch -eq 3 ]]; then
-	persistence
-elif [[ $ch -eq 4 ]]; then
-	read -p "Enter a string to find its length: " str
-	strlen $str
-elif [[ $ch -eq 5 ]]; then
-	read -p "Enter a string: " s
-	palindrome $s
-elif [[ $ch -eq 6 ]]; then
-	read -p "Enter a number: " no
-	oddoreven $no
-else
-	echo "Wrong choice"
-fi
+	"2" )
+		read -p "Enter the number to find its factorial: " NUM
+		factorial $NUM
+		;;
+
+	"3" )
+		persistence
+		;;
+
+	"4" )
+		read -p "Enter a string to find its length: " str
+		strlen $str
+		;;
+
+	"5" )
+		read -p "Enter a string: " s
+		palindrome $s
+		;;
+
+	"6" )
+		read -p "Enter a number: " no
+		oddoreven $no
+		;;
+
+	* )
+		echo "Wrong choice"
+		;;
+
+esac
