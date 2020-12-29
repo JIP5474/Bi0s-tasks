@@ -2,12 +2,13 @@
 
 ch='y'
 while ch=='y' or ch=='Y':
-    string=input("Enter the string: ")
+    
     print("Menu:")                      #menu for asking choice
     print("1.Cipher a message")
     print("2.Decipher a message")
     choice=int(input("Enter your choice: "))
     if choice==1:
+        string=input("Enter the string: ")
         k=int(input("Enter the key for ciphering: "))
         print("Creating cipher")
         code=""
@@ -15,6 +16,7 @@ while ch=='y' or ch=='Y':
             code=code+chr(ord(x)+k)
         print("The code is ",code)
     elif choice==2:
+        string=input("Enter the string: ")
         k=int(input("Enter the key for deciphering: "))
         print("Deciphering code")
         message=""
