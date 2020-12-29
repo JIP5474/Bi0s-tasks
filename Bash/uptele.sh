@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script to update status on telegram Bios pentest group
 
-while true;															#to make it run non-stop
+while true;								#to make it run non-stop
 do
 	if [[ "$(date +%H%M%S)" -eq "220000" ]];			#if 10pm then update 
 	then
